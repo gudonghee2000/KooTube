@@ -1,0 +1,14 @@
+html 
+    head 
+        title #{pageTitle}
+
+    body 
+        header 
+            h1 #{pageTitle} | KooTube
+            nav 
+                ul 
+                    li 
+                        a(href="/") Home 
+        main 
+            block content 
+    include ../partials/footer
