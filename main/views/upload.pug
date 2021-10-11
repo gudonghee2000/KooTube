@@ -1,0 +1,10 @@
+extends ./layouts/base 
+
+block content 
+    if(errorMessage)
+        li=errorMessage
+    form(method="POST")
+        input(type="text", name="title", required, placeholder="Title")
+        input(type="text", name="description", required, placeholder="Description")
+        input(type="text", name="hashtags", required, placeholder="콤마로 구분해서 해시태그입력")
+        input(type="submit", value="Upload")

@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/gudonghee2000/Video-App#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "mongoose": "^6.0.10",
     "pug": "^3.0.2"
   },
   "devDependencies": {

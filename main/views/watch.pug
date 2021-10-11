@@ -1,0 +1,9 @@
+extends ./layouts/base
+
+block content 
+    div 
+        h1=video.description
+    a(href=`/videos/${video._id}/edit`) Edit video &rarr;
+    br
+    a(href=`/videos/${video._id}/remove`) Delete video &rarr; 
+    

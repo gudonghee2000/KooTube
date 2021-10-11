@@ -1,0 +1,10 @@
+extends ./layouts/base
+
+block content 
+    if(errorMessage)
+        li=errorMessage
+    form(method="POST")
+        input(type="text", name="title", required, value=video.title, placeholder="Title")
+        input(type="text", name="description", required, value=video.description, placeholder="Description")
+        input(type="text", name="hashtags", required, value=video.hashtags.join(), placeholder="콤마로 구분해서 해쉬태그입력")
+        input(type="submit", value="Upload")
