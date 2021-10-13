@@ -4,6 +4,7 @@ import userRouter from "./router/userRouter";
 import videoRouter from "./router/videoRouter";
 import bodyParser from "body-parser";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import { localsMiddleware } from "./middlewares";
 import "./db.js";
 
@@ -17,8 +18,11 @@ app.set("views", process.cwd() + "/main/views");
 app.use(session({
     secret: "hey",
     resave: true,
-    saveUninitialized: false
-}))
+    saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: "mongodb://127.0.0.1:27017/k",
+    })
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(localsMiddleware);
 app.use("/", rootRouter);
