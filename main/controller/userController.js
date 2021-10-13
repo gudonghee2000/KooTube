@@ -1,11 +1,24 @@
 import User from "../models/User";
+import bcrypt from "bcrypt";
 
 export const getLogin = (req, res) => {
-
+    res.render("login", { pageTitle: "Login" });
 }
 
-export const postLogin = (req, res) => {
-
+export const postLogin = async (req, res) => {
+    const pageTitle = "Login"
+    const { username, password } = req.body;
+    const user = await User.find({ username });
+    if (!user) {
+        return res.status(400).render("login", { pageTitle, errorMessage: "존재하지 않는 계정입니다." });
+    }
+    const ok = await bcrypt.compare(user.password, password);
+    if (!ok) {
+        return res.status(400).render("login", { pageTitle, errorMessage: "비밀번호가 일치하지 않습니다" });
+    }
+    req.session.loggedIn = true;
+    req.session.user = user;
+    return res.redirect("/");
 }
 
 export const getJoin = (req, res) => {
@@ -15,16 +28,16 @@ export const getJoin = (req, res) => {
 export const postJoin = async (req, res) => {
     const pageTitle = "Join";
     const { username, name, email, password, password2 } = req.body;
-    let user = await User.find({ username: username });
-    if (!user) {
-        return res.render("join", { pageTitle, errorMessage: "존재하는 아이디입니다." });
+    let user = await User.findOne({ username });
+    if (user) {
+        return res.status(400).render("join", { pageTitle, errorMessage: "존재하는 아이디입니다." });
     }
-    user = await User.find({ email: email });
-    if (!user) {
-        return res.render("join", { pageTitle, errorMessage: "존재하는 이메일입니다." });
+    user = await User.findOne({ email: email });
+    if (user) {
+        return res.status(400).render("join", { pageTitle, errorMessage: "존재하는 이메일입니다." });
     }
     if (password !== password2) {
-        return res.render("join", { pageTitle, errorMessage: "비밀번호가 일치하지 않습니다." });
+        return res.status(400).render("join", { pageTitle, errorMessage: "비밀번호가 일치하지 않습니다." });
     }
     try {
         await User.create({
@@ -33,7 +46,7 @@ export const postJoin = async (req, res) => {
             email,
             password
         });
-        return res.redirect("/")
+        return res.redirect("/login")
     } catch (error) {
 
     }

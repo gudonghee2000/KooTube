@@ -5,6 +5,6 @@ import { home } from "../controller/videoController";
 const rootRouter = express.Router();
 
 rootRouter.route("/").get(home)
-rootRouter.route("login").get(getLogin).post(postLogin);
+rootRouter.route("/login").get(getLogin).post(postLogin);
 
 export default rootRouter;
