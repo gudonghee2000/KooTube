@@ -53,7 +53,12 @@ export const postJoin = async (req, res) => {
 }
 
 export const logout = (req, res) => {
-    
+    const user = req.session.user;
+    if (!user) {
+        return res.status(404).render("404", { pageTitle: "잘못된 접근" });
+    }
+    req.session.destroy();
+    return res.redirect("/")
 }
 
 export const see = (req, res) => {
