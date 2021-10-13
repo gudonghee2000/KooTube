@@ -15,15 +15,17 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/main/views");
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(session({
     secret: "hey",
-    resave: true,
+    resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
         mongoUrl: "mongodb://127.0.0.1:27017/k",
     })
 }));
-app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(localsMiddleware);
 app.use("/", rootRouter);
 app.use("/users", userRouter);
