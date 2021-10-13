@@ -4,6 +4,7 @@ import userRouter from "./router/userRouter";
 import videoRouter from "./router/videoRouter";
 import bodyParser from "body-parser";
 import session from "express-session";
+import { localsMiddleware } from "./middlewares";
 import "./db.js";
 
 const PORT = 7000;
@@ -14,11 +15,12 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/main/views");
 
 app.use(session({
-    secret:"hey",
+    secret: "hey",
     resave: true,
     saveUninitialized: false
 }))
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(localsMiddleware);
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);

@@ -53,7 +53,7 @@ export const postJoin = async (req, res) => {
 }
 
 export const logout = (req, res) => {
-
+    
 }
 
 export const see = (req, res) => {

@@ -9,12 +9,16 @@ html
                 ul 
                     li 
                         a(href="/") Home 
-                    li 
-                        a(href="/videos/upload") Upload
-                    li 
-                        a(href="/login") Log in
-                    li 
-                        a(href="/users/join") Join
+                    if loggedIn
+                        li 
+                            a(href="/videos/upload") Upload
+                        li 
+                            a(href="/users/logout") Log out
+                    else
+                        li 
+                            a(href="/login") Log in
+                        li 
+                            a(href="/users/join") Join
         main 
             block content 
     include ../partials/footer
