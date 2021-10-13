@@ -8,11 +8,11 @@ export const getLogin = (req, res) => {
 export const postLogin = async (req, res) => {
     const pageTitle = "Login"
     const { username, password } = req.body;
-    const user = await User.find({ username });
+    const user = await User.findOne({ username });
     if (!user) {
         return res.status(400).render("login", { pageTitle, errorMessage: "존재하지 않는 계정입니다." });
     }
-    const ok = await bcrypt.compare(user.password, password);
+    const ok = await bcrypt.compare(password, user.password);
     if (!ok) {
         return res.status(400).render("login", { pageTitle, errorMessage: "비밀번호가 일치하지 않습니다" });
     }
