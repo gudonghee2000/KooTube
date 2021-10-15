@@ -1,6 +1,7 @@
 extends ./layouts/base
 
-block content 
+block content
+    video(src="/" + video.fileUrl, controls)
     div 
         h1=video.description
     a(href=`/videos/${video._id}/edit`) Edit video &rarr;
