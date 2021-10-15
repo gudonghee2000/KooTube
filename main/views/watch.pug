@@ -4,6 +4,7 @@ block content
     video(src="/" + video.fileUrl, controls)
     div 
         h1=video.description
+        p=video.owner.username
     a(href=`/videos/${video._id}/edit`) Edit video &rarr;
     br
     a(href=`/videos/${video._id}/remove`) Delete video &rarr; 

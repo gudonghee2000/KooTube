@@ -5,10 +5,11 @@ const videoSchema = new mongoose.Schema({
     description: { type: String, required: true, trim: true },
     createdAt: { type: String, required: true, trim: true, default: Date.now },
     hashtags: [{ type: String, required: true, trim: true }],
-    fileUrl : { type: String, required: true },
+    fileUrl: { type: String, required: true },
     meta: {
         views: { type: Number, required: true, default: 0 },
-    }
+    },
+    owner: { type: mongoose.Schema.Types.ObjectId, ref:"user" },
 })
 
 videoSchema.statics.formatHashtags = (hashtags) => {
