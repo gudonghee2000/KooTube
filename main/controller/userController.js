@@ -86,6 +86,7 @@ export const postEdit = async (req, res) => {
     const pageTitle = "edit-profile";
     const { username, name, email } = req.body;
     const { id } = req.params;
+    const avatarUrl = req.file.path
     const user = await User.findById(id);
     if (String(id) !== String(res.locals.loggedInUser._id)) {
         res.status(404).render("404");
@@ -102,6 +103,7 @@ export const postEdit = async (req, res) => {
         username,
         name,
         email,
+        avatarUrl
     })
     return res.redirect("/")
 }

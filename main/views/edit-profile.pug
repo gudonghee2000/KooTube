@@ -3,7 +3,9 @@ extends ./layouts/base
 block content
     if(errorMessage)
         li=errorMessage 
-    form(method="POST")
+    form(method="POST", enctype="multipart/form-data")
+        label(for="avatar") 프로필사진 업로드
+        input(type="file", accept="image/*", required, id="avatar", name="avatar")
         input(type="text", required, name="username", value= user.username, placeholder="Username")
         input(type="text", required, name="name", value= user.name, placeholder="Name")
         input(type="email", required, name="email", value= user.email, placeholder="Email")
