@@ -1,0 +1,12 @@
+extends ./layouts/base 
+
+block content
+    if(errorMessage)
+        li=errorMessage 
+    form(method="POST")
+        input(type="text", required, name="username", value= user.username, placeholder="Username")
+        input(type="text", required, name="name", value= user.name, placeholder="Name")
+        input(type="email", required, name="email", value= user.email, placeholder="Email")
+        input(type="submit", value="Edit")
+    div 
+        a(href=`/users/${user._id}/changepassword`) 비밀번호를 변경하시겠습니까? &rarr; 

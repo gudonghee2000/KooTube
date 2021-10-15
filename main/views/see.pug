@@ -3,3 +3,6 @@ extends ./layouts/base
 block content 
     div 
         h1=user.name
+
+    hr
+    a(href=`/users/${user._id}/edit`) Edit Profile &rarr;
