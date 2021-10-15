@@ -6,6 +6,20 @@ export const localsMiddleware = (req, res, next) => {
     next();
 }
 
+export const accessMiddleware = (req, res, next) => {
+    if (res.locals.loggedIn) {
+        return res.redirect("/");
+    } 
+    next();
+}
+
+export const protectMiddleware = (req, res, next) => {
+    if (!res.locals.loggedIn) {
+        return res.redirect("login");
+    }
+    next();
+}
+
 export const uploadVideo = multer({
     dest: "uploads/videos",
 });
