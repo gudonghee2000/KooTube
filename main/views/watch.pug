@@ -1,7 +1,7 @@
 extends ./layouts/base
 
 block content
-    div.video__container
+    div.video__container#videoContainer(data-id=video._id)
         video(src="/" + video.fileUrl, controls)
         div.video__data
             div.video__data_hashtags
@@ -17,4 +17,6 @@ block content
         hr
         a(href=`/videos/${video._id}/edit`) Edit video &rarr;
         a(href=`/videos/${video._id}/remove`) Delete video &rarr; 
-    
+
+block scripts 
+    script(src="/static/js/videoPlayer.js")

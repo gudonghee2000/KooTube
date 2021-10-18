@@ -2,6 +2,7 @@ import express from "express";
 import rootRouter from "./router/rootRouter";
 import userRouter from "./router/userRouter";
 import videoRouter from "./router/videoRouter";
+import apiRouter from "./router/apiRouter";
 import bodyParser from "body-parser";
 import session from "express-session";
 import MongoStore from "connect-mongo";
@@ -32,6 +33,7 @@ app.use("/static", express.static("assets"));
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
+app.use("/api", apiRouter);
 
 app.listen(PORT, () => {
     console.log(`Server listen ${PORT}PORT🏍`);
