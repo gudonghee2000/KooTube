@@ -64,7 +64,6 @@ export const logout = (req, res) => {
 export const see = async (req, res) => {
     const { id } = req.params;
     const user = await User.findById(id).populate("videos");
-    console.log(user);
     if (!user) {
         return res.status(404).render("404");
     }
@@ -84,29 +83,33 @@ export const getEdit = async (req, res) => {
 }
 
 export const postEdit = async (req, res) => {
-    const pageTitle = "edit-profile";
-    const { username, name, email } = req.body;
-    const { id } = req.params;
-    const avatarUrl = req.file.path
-    const user = await User.findById(id);
-    if (String(id) !== String(res.locals.loggedInUser._id)) {
-        res.status(404).render("404");
+    const {
+        session: {
+            user: { _id, email: sessionEmail, username: sessionUsername, avatarUrl }
+        },
+        body: { username, email },
+        file,
+    } = req;
+    if (sessionUsername !== username && await User.exists({ username })) {
+        return res.render("edit-profile", { pageTitle: "Edit Profile", errorMessage: "입력한 ID가 존재합니다." });
     }
-    let exist = await User.exists({ username });
-    if (exist && user.username !== username) {
-        return res.status(404).render("edit-profile", { pageTitle, errorMessage: "이미존재하는 유저네임입니다.", user });
+    if (sessionEmail !== email && await User.exists({ email })) {
+        return res.render("edit-profile", { pageTitle: "Edit Profile", errorMessage: "입력한 Email이 존재합니다." });
     }
-    exist = await User.exists({ email });
-    if (exist && user.email !== email) {
-        return res.status(404).render("edit-profile", { pageTitle, errorMessage: "이미존재하는 이메일입니다.", user });
-    }
-    await User.findByIdAndUpdate(id, {
+    console.log(req.session.user)
+    console.log(req.file)
+    await User.findByIdAndUpdate(_id, {
+        avatarUrl: file ? file.path : avatarUrl,
         username,
-        name,
         email,
-        avatarUrl
-    })
-    return res.redirect("/")
+    });
+    req.session.user = {
+        ...req.session.user,
+        avatarUrl: file ? file.path : avatarUrl,
+        username,
+        email,
+    };
+    return res.redirect(`/users/${_id}`);
 }
 
 export const getChangePassword = async (req, res) => {

@@ -2,10 +2,14 @@ extends ./layouts/base
 include ./mixins/video
 
 block content 
-    div 
-        img(src="/" + user.avatarUrl)
-        h1=user.name
-        each video in user.videos  
-            +video(video)
-    hr
-    a(href=`/users/${user._id}/edit`) Edit Profile &rarr;
+    div.profile__container
+        div.profile__image
+            if(user.avatarUrl === "0") 
+                span 😊
+            else 
+                img(src="/" + user.avatarUrl)
+        div.profile__name=user.name
+        div.video__grid 
+            each video in user.videos  
+                +video(video)
+                

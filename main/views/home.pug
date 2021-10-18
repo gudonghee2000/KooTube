@@ -1,8 +1,10 @@
 extends ./layouts/base
 include ./mixins/video
 
-block content 
-    each video in videos 
-        +video(video)
-    else
-        p 비디오가 없습니다.
+block content
+    div.video__grid
+        each video in videos 
+            +video(video)
+           
+        else
+            span.empty__message 비디오가 없습니다.

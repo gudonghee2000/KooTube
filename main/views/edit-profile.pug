@@ -10,5 +10,5 @@ block content
         input(type="text", required, name="name", value= user.name, placeholder="Name")
         input(type="email", required, name="email", value= user.email, placeholder="Email")
         input(type="submit", value="Edit")
-    div 
+    div.page__changer 
         a(href=`/users/${user._id}/changepassword`) 비밀번호를 변경하시겠습니까? &rarr; 

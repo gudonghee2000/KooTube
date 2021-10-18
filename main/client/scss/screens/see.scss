@@ -1,0 +1,25 @@
+.video__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 50px
+}
+
+.profile__container {
+    .profile__image {
+        text-align: center;
+        span {
+            font-size: 150px;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 80%;
+        }
+    }
+    .profile__name {
+        text-align: center;
+        margin: 25px auto;
+        font-size: 50px;
+        font-weight: 500;
+    }
+}

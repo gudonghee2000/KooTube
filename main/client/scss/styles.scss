@@ -1,3 +1,25 @@
+//screens
+@import "./screens/home.scss";
+@import "./screens/watch.scss";
+@import "./screens/see.scss";
+
+//component
+@import "./component/header.scss";
+@import "./component/footer.scss";
+@import "./component/video.scss";
+@import "./component/form.scss";
+@import "./component/shared.scss";
+
 body {
-    background-color: red;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    background-color: #191919;
+    color: white;
 }
+
+main {
+    max-width: 1200px;
+    width: 100%;
+    margin : 0 auto;
+    margin-top: 50px;
+}
+

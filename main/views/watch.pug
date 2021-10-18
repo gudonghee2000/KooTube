@@ -1,11 +1,20 @@
 extends ./layouts/base
 
 block content
-    video(src="/" + video.fileUrl, controls)
-    div 
-        h1=video.description
-        p=video.owner.username
-    a(href=`/videos/${video._id}/edit`) Edit video &rarr;
-    br
-    a(href=`/videos/${video._id}/remove`) Delete video &rarr; 
+    div.video__container
+        video(src="/" + video.fileUrl, controls)
+        div.video__data
+            div.video__data_hashtags
+                span=video.hashtags.join(" ") 
+            div.video__data_title=video.title
+            hr
+            a.video__data_user(href=`/users/${video.owner._id}`) 
+                if(video.owner.avatarUrl === '0')
+                    span 😊
+                else
+                    img(src="/" + video.owner.avatarUrl)
+                div.video__data_name=video.owner.name
+        hr
+        a(href=`/videos/${video._id}/edit`) Edit video &rarr;
+        a(href=`/videos/${video._id}/remove`) Delete video &rarr; 
     

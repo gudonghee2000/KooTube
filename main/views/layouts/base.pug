@@ -5,7 +5,8 @@ html
         link(rel="stylesheet" href="/static/css/styles.css") 
     body 
         header 
-            h1 #{pageTitle} | KooTube
+            a(href="/").header__icon 
+                i.fas.fa-backward
             nav 
                 ul 
                     li 
@@ -16,9 +17,15 @@ html
                         li 
                             a(href="/users/logout") Log out
                         li 
-                            a(href=`/users/${loggedInUser._id}`) Profile    
-                    else
+                            a(href=`/users/${loggedInUser._id}/edit`) Edit Profile
                         li 
+                            a(href=`/users/${loggedInUser._id}`)
+                                if loggedInUser.avatarUrl === "0" 
+                                    span 😊
+                                else 
+                                    img.header__avatar(src="/" + loggedInUser.avatarUrl)  
+                    else
+                        li.header__login 
                             a(href="/login") Log in
                         li 
                             a(href="/users/join") Join

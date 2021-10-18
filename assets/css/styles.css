@@ -1,6 +1,225 @@
 /*!***********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./main/client/scss/styles.scss ***!
   \***********************************************************************************************************************/
+.video__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+}
+
+video {
+  width: 90%;
+}
+
+hr {
+  color: white;
+  width: 100%;
+  margin-top: 15px;
+  opacity: 0.5;
+}
+
+.video__data .video__data_hashtags {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 300;
+  color: cornflowerblue;
+}
+.video__data .video__data_title {
+  margin-top: 5px;
+  font-size: 30px;
+  font-weight: 450;
+}
+.video__data .video__data_user {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.video__data .video__data_user img {
+  width: 50px;
+  height: 50px;
+  border-radius: 70%;
+}
+.video__data .video__data_user span {
+  font-size: 50px;
+}
+.video__data .video__data_user .video__data_name {
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  font-weight: 450;
+  margin-top: 20px;
+}
+
+.video__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 50px;
+}
+
+.profile__container .profile__image {
+  text-align: center;
+}
+.profile__container .profile__image span {
+  font-size: 150px;
+}
+.profile__container .profile__image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 80%;
+}
+.profile__container .profile__name {
+  text-align: center;
+  margin: 25px auto;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+}
+header .header__icon {
+  font-size: 50px;
+  color: green;
+}
+header ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+}
+header ul li {
+  font-weight: 600;
+  font-size: 18px;
+  list-style: none;
+  margin-left: 30px;
+}
+header ul li a {
+  text-decoration: none;
+  color: white;
+}
+header ul li a span {
+  font-size: 30px;
+}
+header ul li a .header__avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 70%;
+}
+header ul .header__login {
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+header ul .header__login a {
+  color: black;
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.video__container {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: white;
+}
+.video__container .video__thumb {
+  display: block;
+  width: 100%;
+  height: 140px;
+  background-color: ivory;
+  border-radius: 7px;
+}
+.video__container .video__data {
+  display: flex;
+  flex-direction: column;
+}
+.video__container .video__data .video__info_title {
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.video__container .video__data .video__info_username {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.7;
+  margin-top: 10px;
+}
+.video__container .video__data .video__meta .video__meta_views {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+form {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+form input {
+  all: unset;
+  width: 90%;
+  margin-bottom: 5px;
+  padding: 15px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: 300;
+}
+form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+input[type=submit] {
+  padding: 12px 20px;
+  background-color: rgba(0, 128, 0, 0.9);
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+}
+
+.page__changer {
+  text-align: center;
+  margin-top: 40px;
+}
+.page__changer a {
+  text-decoration: underline;
+  color: white;
+  font-size: 17px;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
 body {
-  background-color: red;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  background-color: #191919;
+  color: white;
+}
+
+main {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
 }

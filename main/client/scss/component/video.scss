@@ -1,0 +1,36 @@
+.video__container {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+    .video__thumb{
+        display: block;
+        width: 100%;
+        height: 140px;
+        background-color: ivory;
+        border-radius: 7px;
+    }
+    .video__data{
+        display: flex;
+        flex-direction: column;
+        .video__info_title {
+            margin-top: 5px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .video__info_username {
+            font-size: 16px;
+            font-weight: 500;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+        .video__meta {
+            .video__meta_views {
+                font-size: 16px;
+                font-weight: 500;
+                opacity: 0.7;
+            }
+        }
+    }
+
+}
