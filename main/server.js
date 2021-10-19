@@ -17,6 +17,7 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/main/views");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(session({
     secret: "hey",
