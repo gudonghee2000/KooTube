@@ -7,6 +7,7 @@ import flash from "express-flash";
 import bodyParser from "body-parser";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import "dotenv/config";
 import { localsMiddleware } from "./middlewares";
 import "./db.js";
 
@@ -21,11 +22,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(session({
-    secret: "hey",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: "mongodb://127.0.0.1:27017/k",
+        mongoUrl: process.env.DB_URL,
     })
 }));
 

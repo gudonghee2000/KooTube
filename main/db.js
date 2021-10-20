@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import "dotenv/config";
 
-mongoose.connect("mongodb://127.0.0.1:27017/k")
+mongoose.connect(process.env.DB_URL)
 
 const db = mongoose.connection;
 
