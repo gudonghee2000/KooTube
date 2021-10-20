@@ -12,4 +12,7 @@ block content
         div.video__grid 
             each video in user.videos  
                 +video(video)
+            else 
+                div.empty__message
+                    span 비디오가 없습니다.
                 

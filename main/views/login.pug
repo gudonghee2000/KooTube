@@ -2,7 +2,7 @@ extends ./layouts/base
 
 block content 
     if(errorMessage)
-        li=errorMessage 
+        div.error_message=errorMessage
     form(method="POST")
         input(type="text", required, placeholder="Username", name="username")
         input(type="password", required, placeholder="Password", name="password")

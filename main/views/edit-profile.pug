@@ -2,7 +2,7 @@ extends ./layouts/base
 
 block content
     if(errorMessage)
-        li=errorMessage 
+        div.error_message=errorMessage
     form(method="POST", enctype="multipart/form-data")
         label(for="avatar") 프로필사진 업로드
         input(type="file", accept="image/*", required, id="avatar", name="avatar")

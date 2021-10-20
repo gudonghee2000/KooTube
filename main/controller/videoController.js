@@ -59,6 +59,7 @@ export const postEdit = async (req, res) => {
         return res.status(404).render("404", { pageTitle: "Video not found." });
     }
     if (String(video.owner) !== String(_id)) {
+        req.flash("error", "Your are not the owner of the video.");
         return res.status(403).redirect("/");
     }
     await Video.findByIdAndUpdate(id, {
@@ -66,6 +67,7 @@ export const postEdit = async (req, res) => {
         description,
         hashtags: Video.formatHashtags(hashtags),
     });
+    req.flash("success", "Changed saved.");
     return res.redirect("/");
 }
 
@@ -123,16 +125,16 @@ export const deleteComment = async (req, res) => {
         params: { videoId, commentId },
     } = req;
     const video = await Video.findById(videoId);
-    if(!video) {
+    if (!video) {
         return res.sendStatus(404);
     }
     const comment = await Comment.findById(commentId);
-    if(!comment) {
+    if (!comment) {
         return res.sendStatus(404);
     }
     if (String(comment.owner) !== String(user._id)) {
         return res.status(403);
-    } 
+    }
     video.comments = video.comments.filter(
         (comment) => String(comment._id) !== commentId
     );
@@ -140,3 +142,4 @@ export const deleteComment = async (req, res) => {
     await Comment.findByIdAndDelete(commentId);
     return res.sendStatus(200);
 }
+

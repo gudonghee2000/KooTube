@@ -54,6 +54,7 @@ export const postJoin = async (req, res) => {
 
 export const logout = (req, res) => {
     const user = req.session.user;
+    req.flash("info", "Bye Bye");
     if (!user) {
         return res.status(404).render("404", { pageTitle: "잘못된 접근" });
     }
@@ -148,6 +149,7 @@ export const postChangePassword = async (req, res) => {
     user.password = newpassword;
     await user.save();
     req.session.user.password = user.password;
+    req.flash("info", "Password updated");
     return res.redirect("/");
 }
 

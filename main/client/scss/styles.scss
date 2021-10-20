@@ -9,6 +9,7 @@
 @import "./component/video.scss";
 @import "./component/form.scss";
 @import "./component/shared.scss";
+@import "./component/comments.scss";
 
 body {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -23,3 +24,30 @@ main {
     margin-top: 50px;
 }
 
+@keyframes goAway {
+    from {
+        transform: none;
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}
+
+.message {
+    position: absolute;
+    left:0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 200px;
+    padding: 10px 20px;
+    border-radius: 10000px;
+    text-align: center;
+    animation: goAway .5s ease-in-out forwards;
+    animation-delay: 5s;
+    &.error {
+        background-color: tomato;
+        color: white;
+    }
+}

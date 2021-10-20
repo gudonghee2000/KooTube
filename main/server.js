@@ -3,6 +3,7 @@ import rootRouter from "./router/rootRouter";
 import userRouter from "./router/userRouter";
 import videoRouter from "./router/videoRouter";
 import apiRouter from "./router/apiRouter";
+import flash from "express-flash";
 import bodyParser from "body-parser";
 import session from "express-session";
 import MongoStore from "connect-mongo";
@@ -28,6 +29,7 @@ app.use(session({
     })
 }));
 
+app.use(flash());
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("assets"));
